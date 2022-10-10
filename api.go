@@ -9,7 +9,8 @@ import (
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/", h.GetFacts).Methods("GET")
+	router.HandleFunc("/", h.Index).Methods("GET")
+	router.HandleFunc("/api/fact", h.GetFacts).Methods("GET")
 
 	http.Handle("/", router)
 	http.ListenAndServe(":8080", router)
