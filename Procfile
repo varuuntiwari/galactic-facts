@@ -1,1 +1,1 @@
-web: api
+web: go run api.go
