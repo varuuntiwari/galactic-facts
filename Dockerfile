@@ -1,15 +1,11 @@
 FROM golang:latest
 
+RUN mkdir /app
+COPY . /app
 WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
 RUN go mod download
-
-COPY *.go ./
-
-RUN go build -o /galactic-facts-api
-
+RUN go build -o api . 
 EXPOSE 8080
 
-CMD [ "/galactic-facts-api" ]
+CMD [ "/app/api" ]
